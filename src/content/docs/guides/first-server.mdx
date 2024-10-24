@@ -524,12 +524,12 @@ export const language = {
 
 While `VirtualCode` objects can be, well, just that, objects, it's often useful to create a JavaScript class to represent them. This class can then contain methods and properties that are useful for handling the file and its associated data.
 
-```ts title="packages/server/src/languagePlugin.ts" ins={3, 12-14, 17-18, 22-99} ins=/(VirtualCode) }/
+```ts title="packages/server/src/languagePlugin.ts" ins={3, 12-14, 17-18, 22-99} ins=/(VirtualCode) }/ ins=/(Html1Code)>/
 import type { LanguagePlugin, VirtualCode } from "@volar/language-core";
 import type { URI } from "vscode-uri";
 import type * as ts from 'typescript';
 
-export const language = {
+export const html1LanguagePlugin = {
   getLanguageId(uri) {
     if (uri.path.endsWith('.html1')) {
       return 'html1';
@@ -544,7 +544,7 @@ export const language = {
     languageCode.update(snapshot);
     return languageCode;
   },
-} satisfies LanguagePlugin<URI>;
+} satisfies LanguagePlugin<URI, Html1Code>;
 
 export class Html1Code implements VirtualCode {
   id = "root";
